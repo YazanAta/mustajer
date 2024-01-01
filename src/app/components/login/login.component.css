@@ -1,0 +1,13 @@
+.l-image {
+    max-width: 100%; 
+    display: block; 
+  }
+  
+  ngx-skeleton-loader{
+    position: absolute;
+    top: 60px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+  }

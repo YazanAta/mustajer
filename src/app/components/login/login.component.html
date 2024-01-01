@@ -1,0 +1,71 @@
+
+            <!-- <div class="alert alert-danger" *ngIf="email.touched && email.errors?.required">Email is Required</div>
+            <div class="alert alert-danger" *ngIf="email.touched && email.errors?.email">email format error</div>-->
+<div class="container row" *ngIf="showPage">
+  <div class="col-12 col-md-6">
+    <img src="../../../assets/login.png" class="l-image" alt="">
+  </div>
+  <div class="container col-12 col-md-6">
+    <form #f="ngForm" class="m-auto p-5" autocomplete="off"  (keydown.enter)="login(f)">
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <input ngModel #email="ngModel" type="email" name="email" id="form2Example1" class="form-control" required email />
+          <label class="form-label" for="form2Example1">Email address</label>
+          <div class="alert alert-danger" *ngIf="email.touched && email.errors?.['email']">Email format error</div>
+        </div>
+      
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <input ngModel #password="ngModel" type="password" name="password" id="form2Example2" class="form-control" required minlength="6"/>
+          <label class="form-label" for="form2Example2">Password</label>
+        </div>
+      
+        <!-- 2 column grid layout for inline styling -->
+        <div class="row mb-4">
+          <div class="col d-flex justify-content-center">
+                    <!-- Submit button -->
+            <button type="submit" class="btn btn-success btn-block mb-3" (click)="login(f)">Sign in</button>
+          </div>
+        </div>
+      
+        <!-- Register buttons -->
+        <div class="text-center">
+          <p>Not a member? <a routerLink="/signup">Register</a></p>
+          <p>or sign up with:</p>
+      
+          <div style="background-color: orange; color: beige; border-radius: 10px;">
+            <button type="button" (click)="loginWithGoogle()" class="btn btn-floating mx-1">
+              <img src="../../../assets/google.svg" alt=""> <span class="m-2 text-white">Login With Google</span>
+            </button>
+          </div>
+          <div class="mt-3">
+            <!-- Simple link -->
+            <a routerLink="forget-password">Forgot password?</a>
+          </div>
+        </div>
+    </form>
+    
+        <!-- Button trigger modal -->
+    <button style="display: none;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" #modalTrigger ></button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            {{errorMessage}}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<ngx-skeleton-loader appearance="line" *ngIf="loader" count = "{{totalCount}}"></ngx-skeleton-loader>

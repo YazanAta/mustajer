@@ -1,0 +1,28 @@
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" routerLink="/">
+            <img src="assets/logo.jpeg" class="logo" alt="" width="40" height="40">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavBar()">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse flex-row-reverse" [class.show]="isOpen" id="navbarSupportedContent">
+        <ul class="navbar-nav" style="margin-right: 50px;">
+            <li class="nav-item">
+            <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+            </li>
+            <li class="nav-item" *ngIf="isUser">
+            <a class="nav-link" routerLink="my-todos">My Todos</a>
+            </li>
+            <li class="nav-item" *ngIf="!isUser">
+            <a class="nav-link" routerLink="login">Login</a>
+            </li>
+            <li class="nav-item" *ngIf="isUser">
+                <button class="btn btn-danger btn-sm margin" (click)="logout()">Logout</button>
+            </li>
+        </ul>
+        </div>
+    </nav>
+</div>
