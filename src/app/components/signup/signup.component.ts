@@ -20,6 +20,10 @@ export class SignupComponent {
   userForm = this.fb.group({
     name: ['', Validators.required],
     address: ['', Validators.required],
+    phone: ['', Validators.compose([
+      Validators.required,
+      this.customValidators.phoneNumberFormat
+    ])],
     email: ['', Validators.compose([
       Validators.required, 
       Validators.email
@@ -32,7 +36,7 @@ export class SignupComponent {
       Validators.minLength(8),
       Validators.required
     ])],
-
+    terms: [false, Validators.requiredTrue]
   },
   {
     validators: this.customValidators.passwordMatchValidator("password", "confirmPassword")
@@ -46,7 +50,7 @@ export class SignupComponent {
     this.as.signup(data.email, data.password)
     .then(result => {
       this.errorMessage = ''
-      this.us.addNewUser(result.user?.uid, data.name, data.email).then(() => {
+      this.us.addNewUser(result.user?.uid, data.name, data.email, data.phone, data.address).then(() => {
         result.user?.updateProfile({
           displayName: data.name
         })

@@ -1,0 +1,29 @@
+.title{
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    z-index: 100;
+    color: white;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: xx-large;
+}
+
+.card-footer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.photos{
+    img{
+        float: right
+    }
+}
+
+@media (max-width: 767px) {
+    .photos{
+        text-align: center;
+        img{
+            float: none
+        }
+    }
+}

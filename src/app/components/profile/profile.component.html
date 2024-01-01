@@ -1,0 +1,116 @@
+<section style="background-color: #eee;">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                class="rounded-circle img-fluid" style="width: 150px;">
+              <h5 class="my-3">{{currentUser?.name | uppercase}}</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">{{currentUser?.name | titlecase}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-4">
+                  <p class="mb-0">{{currentUser?.email}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">{{currentUser?.phone}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">{{currentUser?.address}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div>My Items <span class="float-end text-primary" (click)="openModal()" type="submit">Upload New Post</span></div>
+            <div class="col-md-6 my-1" *ngFor="let post of myPosts">
+
+              <div class="card mb-4 mb-md-0" style="width: 18rem;">
+                <div class="row">
+                  <div class="col-12">
+                    <img src={{post.photoUrl}} class="card-img-top" alt="Photo 1">
+                  </div>
+                  <!--<div class="row">
+                    <div class="col-4">
+                      <img src="" class="card-img-top" alt="Photo 2">
+                    </div>
+                    <div class="col-4">
+                      <img src="" class="card-img-top" alt="Photo 3">
+                    </div>
+                    <div class="col-4">
+                      <img src="" class="card-img-top" alt="Photo 4">
+                    </div>
+                  </div>-->
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">{{post.title}}</h5>
+                  <p class="card-text">
+                    <strong>Residential Type:</strong> {{post.residential}}
+                    <br>
+                    <strong>Purpose:</strong> {{post.purpose}}
+                    <br>
+                    <strong>Description:</strong> {{post.description}}
+                    <br>
+                    <strong>Location:</strong> {{post.location}}
+                    <br>
+                    <strong *ngIf="post.region">Region:</strong> {{post.region}}
+                    <br *ngIf="post.region">
+                    <strong>Area:</strong> {{post.area}} sq. m
+                    <br>
+                    <strong>Bathrooms:</strong> {{post.bathrooms}}
+                    <br>
+                    <strong>Bedrooms:</strong> {{post.bedrooms}}
+                    <br>
+                    <strong class="text-success">Status:</strong> {{post.status}} 
+                  </p>
+                  <div class="card-footer">
+                    <button class="btn btn-danger"  type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="openDeleteModal(post)">Delete</button>
+                  </div>
+                </div>
+              </div>    
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Are You Sure You Want To Delete This Post</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{postToDelete?.title}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger"  (click)="deletePost()" data-bs-dismiss="modal">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Delete Modal End -->
+
+<app-add-post (onModalClose)="closeModal()"></app-add-post>

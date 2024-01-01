@@ -7,5 +7,5 @@ export const environment = {
         storageBucket: "mustajer-4305c.appspot.com",
         messagingSenderId: "371445172180",
         appId: "1:371445172180:web:61b6a2832a1df39b15f841"
-    }
+    },
 };

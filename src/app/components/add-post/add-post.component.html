@@ -1,0 +1,145 @@
+<!-- The Modal -->
+<div class="modal" id="myModal" #modal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add Post</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModal()"></button>
+            </div>
+
+            <!-- Modal body -->
+            <form [formGroup]="postForm" (ngSubmit)="uploadPost(postForm)">
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="title">Title:</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" formControlName="title">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="residential">Residential:</label>
+                        <select class="form-control" id="residential" name="residential" formControlName="residential">
+                            <option value="appartment">Appartment</option>
+                            <option value="villa">Villa</option>
+                            <option value="chalet">Chalet</option>
+                            <option value="studio">Studio</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="purpose">Purpose:</label>
+                        <select class="form-control" id="purpose" name="purpose" formControlName="purpose">
+                            <option value="sale">Sale</option>
+                            <option value="rent">Rent</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Location:</label>
+                        <select class="form-control" id="location" name="location" formControlName="location">
+                            <option value="amman" #amman>Amman</option>
+                            <option value="irbid">Irbid</option>
+                            <option value="zarqa">Zarqa</option>
+                            <option value="aqaba">Aqaba</option>
+                            <option value="madaba">Madaba</option>
+                            <option value="ma'an">Ma'an</option>
+                            <option value="tafila">Tafila</option>
+                            <option value="ramtha">Ramtha</option>
+                            <option value="karak">Karak</option>
+                            <option value="ajloun">Ajloun</option>
+                            <option value="jarash">Jarash</option>
+                            <option value="mafraq">Mafraq</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" *ngIf="amman.selected">
+                        <label for="region">Region:</label>
+                        <select class="form-control" id="region" name="region" formControlName="region">
+                            <option value="Abdoun">Abdoun</option>
+                            <option value="Weibdeh">Weibdeh</option>
+                            <option value="Shmeisani">Shmeisani</option>
+                            <option value="Jabal Amman">Jabal Amman</option>
+                            <option value="Jabal Hussein">Jabal Hussein</option>
+                            <option value="Al-Rabiah">Al-Rabiah</option>
+                            <option value="Al-Madina Al-Munawara Street">Al-Madina Al-Munawara Street</option>
+                            <option value="Tla' Al-Ali">Tla' Al-Ali</option>
+                            <option value="Al-Jubeiha">Al-Jubeiha</option>
+                            <option value="Um Uthaina">Um Uthaina</option>
+                            <option value="Dabouq">Dabouq</option>
+                            <option value="Marka">Marka</option>
+                            <option value="Swefieh">Swefieh</option>
+                            <option value="Dahiyat Al-Rasheed">Dahiyat Al-Rasheed</option>
+                            <option value="Al-Muqabalain">Al-Muqabalain</option>
+                            <option value="Bayader Wadi Al-Seer">Bayader Wadi Al-Seer</option>
+                            <option value="Al-Yasmeen">Al-Yasmeen</option>
+                            <option value="Gardens Street">Gardens Street</option>
+                            <option value="Ashrafieh">Ashrafieh</option>
+                            <option value="Khilda">Khilda</option>
+                            <option value="Basman">Basman</option>
+                            <option value="Wadi Abdoun">Wadi Abdoun</option>
+                            <option value="Al-Qweismeh">Al-Qweismeh</option>
+                            <option value="Jubaiha">Jubaiha</option>
+                            <option value="Khalda">Khalda</option>
+                            <option value="Al-Jandaweel">Al-Jandaweel</option>
+                            <option value="Al-Nasr">Al-Nasr</option>
+                            <option value="Tareq">Tareq</option>
+                            <option value="Al-Mahatta">Al-Mahatta</option>
+                            <option value="Al-Mahatta King Hussein">Al-Mahatta King Hussein</option>
+                            <option value="Al-Hashemi">Al-Hashemi</option>
+                            <option value="Al-Medina Al-Tijariyya">Al-Medina Al-Tijariyya</option>
+                            <option value="Al-Medina Al-Omariyya">Al-Medina Al-Omariyya</option>
+                            <option value="Al-Medina Al-Riyadiyya">Al-Medina Al-Riyadiyya</option>
+                            <option value="Al-Medina Al-Urduniyya Al-Amma">Al-Medina Al-Urduniyya Al-Amma</option>
+                            <option value="Al-Medina Al-Urduniyya Al-Masrafiyya">Al-Medina Al-Urduniyya Al-Masrafiyya</option>
+                            <option value="Al-Medina Al-Sharqiyya">Al-Medina Al-Sharqiyya</option>
+                            <option value="Al-Medina Al-Gharbiyya">Al-Medina Al-Gharbiyya</option>
+                            <option value="Al-Medina Al-Tijariyya Al-Urduniyya">Al-Medina Al-Tijariyya Al-Urduniyya</option>
+                            <option value="Al-Medina Al-Tijariyya Al-Urduniyya Al-Kubra">Al-Medina Al-Tijariyya Al-Urduniyya Al-Kubra</option>
+                            <option value="Al-Medina Al-Tijariyya Al-Urduniyya Al-Sughra">Al-Medina Al-Tijariyya Al-Urduniyya Al-Sughra</option>
+                            <option value="Al-Medina Al-Tijariyya Al-Masrafiyya Al-Kubra">Al-Medina Al-Tijariyya Al-Masrafiyya Al-Kubra</option>
+                            <option value="Al-Medina Al-Tijariyya Al-Masrafiyya Al-Sughra">Al-Medina Al-Tijariyya Al-Masrafiyya Al-Sughra</option>
+                            <option value="Al-Medina Al-Sinaiyya Al-Urduniyya">Al-Medina Al-Sinaiyya Al-Urduniyya</option>
+                            <option value="Al-Medina Al-Riyadiyya Al-Urduniyya">Al-Medina Al-Riyadiyya Al-Urduniyya</option>
+                            <option value="Al-Medina Al-Tijariyya Al-Sinaiyya Al-Urduniyya">Al-Medina Al-Tijariyya Al-Sinaiyya Al-Urduniyya</option>                        
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter description" formControlName="description"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bathrooms">Bathrooms Number:</label>
+                        <input type="number" class="form-control" id="bathrooms" name="bathrooms" placeholder="Enter number of bathrooms" formControlName="bathNum" min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bedrooms">Bedrooms Number:</label>
+                        <input type="number" class="form-control" id="bedrooms" name="bedrooms" placeholder="Enter number of bedrooms" formControlName="bedNum" min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="area">Area (in square meters):</label>
+                        <input type="number" class="form-control" id="area" name="area" placeholder="Enter area" formControlName="area" min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+                        <input class="form-control" type="file" id="formFileMultiple" #image accept="*.png.jpg" formControlName="photoFile">
+                    </div>
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="submit" [disabled]="postForm.invalid" class="btn btn-success" data-bs-dismiss="modal" >Upload Post</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

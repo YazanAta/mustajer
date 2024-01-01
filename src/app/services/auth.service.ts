@@ -28,15 +28,6 @@ export class AuthService {
     return this.afAuth.signOut()
   }
 
-  GoogleAuth() {
-    return this.AuthLogin(new GoogleAuthProvider());
-  }
-
-  // Auth logic to run auth providers
-  AuthLogin(provider: firebase.auth.AuthProvider) {
-    return this.afAuth.signInWithPopup(provider)
-  }
-
   deleteAccount(){
     this.afAuth.currentUser.then(user => {
       user?.delete()

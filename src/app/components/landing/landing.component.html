@@ -1,0 +1,168 @@
+<div class="container">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div class="title">Mustajer</div>
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../../../assets/carousel11.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Service in Jordan</h5>
+              <p>We Offer our service in Jordan For now, expanding plan is in mind..</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="../../../assets/carousel2.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Easy to use Website</h5>
+              <p>Use our website and be comfortable..</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="../../../assets/carousel3.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Buy, Rent, Ask</h5>
+              <p>Feel Free to view all posts.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <hr class="m-5"/>
+  
+    <div class="about-section my-4">
+      <div class="row">
+        <div class="col-md-6 text-center my-auto">
+          <h2 class="p-2">About Us</h2>
+          <p style="line-height: 2.5rem;">
+            Apartment hunting can be a frustrating and time-consuming process for tenants, while property 
+            management can be equally challenging for landlords. Mustajer Website aims to solve these problems by 
+            simplifying the apartment rental process for both landlords and prospective tenants.
+          </p>
+        </div>
+        <div class="col-md-6">
+          <div class="photos">
+            <img src="../../../assets/about.jpg" width="100%" height="auto" alt="Photo 1">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="m-5"/>
+  
+    <!--Form Start-->
+    <div class="container-fluid" style="background: #ECF4D6; padding: 40px 0;">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-10">
+              <form [formGroup]="searchForm" (ngSubmit)="search()" class="bg-white p-4 rounded form-inline">
+                <div class="form-group">
+                  <label for="residential" class="mr-2">Residential</label>
+                  <select id="residential" formControlName="residential" class="form-control mr-2">
+                    <option value="appartment">Apartment</option>
+                    <option value="villa">Villa</option>
+                    <option value="chalet">Chalet</option>
+                    <option value="studio">Studio</option>
+                  </select>
+                </div>
+      
+                <div class="form-group">
+                  <label for="purpose" class="mr-2">Purpose</label>
+                  <select id="purpose" formControlName="purpose" class="form-control mr-2">
+                    <option value="rent">rent</option>
+                    <option value="sale">sale</option>
+                  </select>
+                </div>
+      
+                <div class="form-group">
+                  <label for="location" class="mr-2">Location</label>
+                  <select id="location" formControlName="location" class="form-control mr-2">
+                    <option value="amman">Amman</option>
+                    <option value="irbid">Irbid</option>
+                    <option value="zarqa">Zarqa</option>
+                    <option value="aqaba">Aqaba</option>
+                    <option value="madaba">Madaba</option>
+                    <option value="ma'an">Ma'an</option>
+                    <option value="tafila">Tafila</option>
+                    <option value="ramtha">Ramtha</option>
+                    <option value="karak">Karak</option>
+                    <option value="ajloun">Ajloun</option>
+                    <option value="jarash">Jarash</option>
+                    <option value="mafraq">Mafraq</option>
+                  </select>
+                </div>
+      
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+              </form>
+            </div>
+            <button class="btn btn-success col-3 m-3" type="submit" (click)="getAllPosts()">Get All Posts</button>
+          </div>
+        </div>
+        
+    </div>      
+    <!--Form End-->      
+
+    <div class="row" *ngIf="showResults">
+      <div class="col-md-6 my-1" *ngFor="let post of resultPosts">
+        <div class="card mb-4 mb-md-0" style="width: 18rem;">
+
+          <div class="row">
+            <div class="col-12">
+              <img src={{post.photoUrl}} class="card-img-top" alt="Photo 1">
+            </div>
+            <!--<div class="row">
+              <div class="col-4">
+                <img src="photo2.jpg" class="card-img-top" alt="Photo 2">
+              </div>
+              <div class="col-4">
+                <img src="photo3.jpg" class="card-img-top" alt="Photo 3">
+              </div>
+              <div class="col-4">
+                <img src="photo4.jpg" class="card-img-top" alt="Photo 4">
+              </div>
+            </div>-->
+          </div>
+
+          <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <p class="card-text">
+              <strong>Residential Type:</strong> {{post.residential}}
+              <br>
+              <strong>Purpose:</strong> {{post.purpose}}
+              <br>
+              <strong>Location:</strong> {{post.location}}
+              <br>
+              <strong *ngIf="post.region">region:</strong> {{post.region}}
+              <br *ngIf="post.region">
+              <strong>Area:</strong> {{post.area}} sq. m
+              <br>
+              <strong>Bathrooms:</strong> {{post.bathrooms}}
+              <br>
+              <strong>Bedrooms:</strong> {{post.bedrooms}}
+            </p>
+            <strong class="text-primary" style="cursor: pointer;" (click)="goToPostInfo(post.id, post.owner.email)">Click For More Details</strong>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-success" (click)="openWhatsapp(post.owner, post.title)"> <i class="bi bi-whatsapp"></i> Start Chat</button>
+            <div (click)="addToWishlist(post)" style="cursor: pointer;">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
+            </div>
+        </div>
+        </div>              
+      </div>
+    </div>
+</div>
+  

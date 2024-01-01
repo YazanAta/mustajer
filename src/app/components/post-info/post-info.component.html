@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="card mb-3 shadow" style="overflow: hidden;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src={{post.photoUrl}} class="img-fluid" alt="Responsive image">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <p class="card-text">
+              <strong>Purpose:</strong> {{post.purpose}}<br>
+              <strong>Location:</strong> {{post.location}}<br>
+              <strong *ngIf="post.region">Region:</strong> {{post.region}}<br>
+              <strong>Area:</strong> {{post.area}} sq. m<br>
+              <strong>Bathrooms:</strong> {{post.bathrooms}}<br>
+              <strong>Bedrooms:</strong> {{post.bedrooms}}<br>
+              <strong>Description: </strong>
+              <p>{{post.description}}</p>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary m-2" (click)="shareFacebook()">
+                Share Link On Facebook
+            </button>
+          
+            <button class="btn btn-success m-2" (click)="shareWhatsapp()">
+                Share Link On Whatsapp
+            </button>
+
+            <button class="btn btn-secondary m-2" (click)="shareTwitter()">
+              Share Link On Twitter
+          </button>
+          </div>
+        </div>
+      </div>
+      
+      <button class="btn btn-warning mt-3" routerLink="/">Back to Home</button>
+    </div>
+  </div>

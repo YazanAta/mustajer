@@ -34,6 +34,21 @@ export class CustomValidationsService {
     };
   }
 
+  phoneNumberFormat(control: AbstractControl): { [key: string]: boolean } | null {
+    const phoneNumber = control.value;
+  
+    // Define a regular expression for the desired format
+    const regex = /^(\d{9})$/;
+  
+    // Check if the phone number matches the format
+    if (!regex.test(phoneNumber)) {
+      return { 'invalidPhoneNumber': true };
+    }
+  
+    return null; // Return null if the format is valid
+  }
+
+
   //patternValidator(regex: RegExp, error: ValidationErrors): ValidatorFn {
   //  return (control: AbstractControl): { [key: string]: any } => {
   //    if (!control.value) {

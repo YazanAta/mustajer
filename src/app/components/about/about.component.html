@@ -1,0 +1,71 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-8">
+        <h2>About Us</h2>
+        <p>
+            Our website project aims to simplify the apartment rental process for both landlords and 
+            prospective tenants. We envision creating a user-friendly platform that provides a comprehensive 
+            database of available apartments for rent, making it easy for users to find their ideal living space. 
+            The website will serve as a centralized hub, connecting property owners with potential renters and 
+            facilitating a seamless rental experience. This project seeks to streamline apartment hunting, 
+            reduce the hassle of property management, and enhance the overall rental process.
+        </p>
+  
+        <div class="row">
+          <h4 class="col-8">What Our Clients Say</h4>
+          <h5 class="col-4 text-primary" style="cursor: pointer;" (click)="showFeedbackForm = !showFeedbackForm">Add Your Feedback</h5>
+        </div>
+
+        <div class="container my-5" *ngIf="showFeedbackForm">
+          <h4>Feedback</h4>
+          <p>
+            We value your feedback. If you have any suggestions or questions, please feel free to
+            reach out to us using the form below.
+          </p>
+    
+          <!-- Feedback Form -->
+          <form #feedbackForm="ngForm">
+            <div class="mb-3">
+              <label for="name" class="form-label">Your Name</label>
+              <input type="text" class="form-control" id="name" placeholder="John Doe" name="name" ngModel required>
+            </div>
+            <div class="mb-3">
+              <label for="feedback" class="form-label">Your Feedback</label>
+              <textarea class="form-control" id="feedback" rows="4" placeholder="Enter your feedback" name="feedback" ngModel required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="submitFeedback()" [disabled]="!feedbackForm.form.valid">Submit Feedback</button>
+          </form>
+        </div>
+        <div *ngFor="let feedback of feedbacks$ | async" class="card m-3">
+          <div class="card-body">
+            <p class="card-text">{{ feedback.feedback }}</p>
+            <p class="card-text"><small class="text-muted">Submitted by {{ feedback.name }}</small></p>
+          </div>
+        </div>
+
+        <div class="container my-5">
+          <h4>Contact Us</h4>
+          <p>If you have any questions or suggestions, feel free to reach out to us:</p>
+        
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <p>Customer.s@mustajer.com</p>
+              </div>
+              <a class="btn btn-primary" href="mailto:Customer.s@mustajer.com" style="color: white; text-decoration: none;">Send Email</a>
+            </div>
+        
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <p>+962780980695</p>
+              </div>
+              <a class="btn btn-primary" href="tel:+962780980695" style="color: white; text-decoration: none;">Call Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
